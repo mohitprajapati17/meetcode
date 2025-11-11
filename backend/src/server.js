@@ -3,9 +3,18 @@ import { env } from "./libs/env.js";
 import path from "path";
 const app=express();
 import connectDB from "./libs/db.js";
+import cors from "cors";
+import { inngest } from "./libs/injest.js";
+import { serve  } from "inngest/express";
+import { functions } from "./libs/injest.js";
+
 
 app.use(express.json());
+app.use(cors({origin:env.CLIENT_URL,credentials:true}));
+
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/api/inngest" , serve({client:inngest,functions}))
 
 const __dirname=path.resolve();
 app.get("/home",(req,res)=>{
