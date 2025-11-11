@@ -5,7 +5,8 @@ const app=express();
 import connectDB from "./libs/db.js";
 import cors from "cors";
 
-import { serve  } from "inngest/express";
+import { serve } from "inngest/express";
+import { inngest } from "./libs/injest.js";
 import { functions } from "./libs/injest.js";
 
 
@@ -14,7 +15,7 @@ app.use(cors({origin:env.CLIENT_URL,credentials:true}));
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/inngest" , serve({client:inngest,functions}))
+app.use("/api/inngest" , serve({client:inngest,functions }))
 
 const __dirname=path.resolve();
 app.get("/home",(req,res)=>{
