@@ -8,6 +8,11 @@ import cors from "cors";
 import { serve } from "inngest/express";
 import { inngest } from "./libs/injest.js";
 import { functions } from "./libs/injest.js";
+import chatRoutes from "./routes/chatRoutes.js";
+import { clerkMiddleware } from '@clerk/express'
+
+
+
 
 
 app.use(express.json());
@@ -17,10 +22,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/inngest" , serve({client:inngest,functions }))
 
-const __dirname=path.resolve();
-app.get("/home",(req,res)=>{
-    res.send("Welcome to the home page");
+app.use(clerkMiddleware());
+
+const __dirname=path.resolve();  // it  gives auth  object in headers so   that we can access the user data in the request object
+
+app.get("/test",(req,res)=>{
+    res.send("Test route works!");
 });
+
+app.use("/api/chat",chatRoutes);
+
+
 // production
 
 if(env.NODE_ENV==="production"){
