@@ -5,11 +5,13 @@ const app=express();
 import connectDB from "./libs/db.js";
 import cors from "cors";
 
+
 import { serve } from "inngest/express";
 import { inngest } from "./libs/injest.js";
 import { functions } from "./libs/injest.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import { clerkMiddleware } from '@clerk/express'
+import sessionRoutes from "./routes/sessionRoutes.js";
 
 
 
@@ -31,6 +33,7 @@ app.get("/test",(req,res)=>{
 });
 
 app.use("/api/chat",chatRoutes);
+app.use("/api/session",sessionRoutes);
 
 
 // production
