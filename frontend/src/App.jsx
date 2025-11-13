@@ -9,14 +9,20 @@ import { Toaster } from 'react-hot-toast'
 import { useUser } from '@clerk/clerk-react'
 import Problems from './pages/Problems'
 import { Navigate } from 'react-router'
+import HomePage from './pages/HomePage'
+import Dashboard from './pages/Dashboard'
 function App() {
-  
+
 const {isSignedIn}=useUser();
   return (
     <>
     <Routes>
-      <Route path="/" element={<Home />} />
+
       <Route path="/problems" element={isSignedIn ? <Problems /> : <Navigate to="/sign-in" />} />
+      <Route path="/" element={ isSignedIn ?<HomePage />:<Navigate to="/dashboard" />} />
+      <Route path="/dashboard" element={SignedIn? <Dashboard/> :<Navigate to="/" />} />
+
+
       
     </Routes>
     <Toaster />
