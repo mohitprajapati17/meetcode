@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './navBar'
+import Navbar from './NavBar'
 import { PROBLEMS } from '../data/problems'
 import { getDifficultyColor } from '../lib/utils'
 import { Link } from 'react-router'
