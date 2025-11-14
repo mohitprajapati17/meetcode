@@ -11,16 +11,23 @@ import Problems from './pages/Problems'
 import { Navigate } from 'react-router'
 import HomePage from './pages/HomePage'
 import Dashboard from './pages/Dashboard'
+import ProblemsPage from './pages/ProblemsPage'
+import ProblemPage from './pages/ProblemPage'
+
 function App() {
 
-const {isSignedIn}=useUser();
+  const { isLoaded, isSignedIn } = useUser();
+
+  // Fix: Don't render routes until Clerk finishes loading
+  if (!isLoaded) return null;
   return (
     <>
     <Routes>
 
-      <Route path="/problems" element={isSignedIn ? <Problems /> : <Navigate to="/sign-in" />} />
-      <Route path="/" element={ isSignedIn ?<HomePage />:<Navigate to="/dashboard" />} />
-      <Route path="/dashboard" element={SignedIn? <Dashboard/> :<Navigate to="/" />} />
+      <Route path="/problems" element={isSignedIn ? <ProblemsPage /> : <Navigate to="/" />} />
+      <Route path="/" element={ <HomePage />} />
+      <Route path="/dashboard" element={isSignedIn? <Dashboard/> :<Navigate to="/" />} />
+      <Route path="/problems/:id" element={isSignedIn? <ProblemPage/> :<Navigate to="/"/>}/>
 
 
       

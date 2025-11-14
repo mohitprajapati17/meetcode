@@ -12,12 +12,20 @@ import { CodeIcon } from 'lucide-react'
 import { LanguagesIcon } from 'lucide-react'
 import { BrainIcon } from 'lucide-react'
 import { UsersIcon } from 'lucide-react'
+import { useNavigate } from 'react-router'
+import { useUser } from '@clerk/clerk-react'
+
 
 
 
 
 
 function HomePage() {
+    const navigate =useNavigate();
+  const { isLoaded, isSignedIn } = useUser();
+
+  // Fix: Don't render routes until Clerk finishes loading
+  if (!isLoaded) return null;
   return (
     <div  className ="bg-gradient-to-br  from-base-100 via-base-200 to-base-300">
 
@@ -45,8 +53,10 @@ function HomePage() {
                 </Link>
 
                 {/* {Auth Buttons} */}
-                <SignInButton mode="modal" >
+                {!isSignedIn?(
+                    <SignInButton mode="modal" >
                     <button className="group  px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                        
                         <span>
                             Get  Started
                         </span>
@@ -55,6 +65,18 @@ function HomePage() {
 
                     </button>
                 </SignInButton>
+                ):(
+                    <button className="group  px-6 py-3 bg-gradient-to-r from-primary to-secondary rounded-xl text-white font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2" onClick={()=>{navigate("/dashboard")}}>
+                        
+                        <span>
+                            Dashboard
+                        </span>
+                        <ArrowRightIcon className="size-4 group-hover:translate-x-1 transition-transform duration-300"/>
+
+
+                    </button>
+                )}
+                
 
       
 
