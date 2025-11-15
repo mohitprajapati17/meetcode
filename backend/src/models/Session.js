@@ -8,7 +8,7 @@ const sessionSchema =new mongoose.Schema({
     },
     difficulty:{
         type:String,
-        enum:["Easy","Medium","Hard"],
+        enum:["easy","medium","hard"],
         required:true,
     },
     host:{
@@ -16,6 +16,11 @@ const sessionSchema =new mongoose.Schema({
         ref:"User",
         required:true,
     },
+    participant: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: null,
+      },
     status:{
         type:String,
         enum:["active","completed"],

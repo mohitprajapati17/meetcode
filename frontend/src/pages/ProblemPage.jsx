@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { PROBLEMS } from '../data/problems';
 import { useEffect } from 'react';
 import { Panel ,PanelGroup , PanelResizeHandle } from 'react-resizable-panels';
-import Navbar from './navBar';
+import Navbar from '../components/Navbar';
 import CodeEditor from '../components/CodeEditor';
 import OutPutPanel from '../components/OutPutPanel';
 import ProblemDescription from '../components/ProblemDescription';

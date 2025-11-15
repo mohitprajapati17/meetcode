@@ -18,7 +18,7 @@ async function createSession(req,res){
         const session =await Session.create({problem ,difficulty  , host:userId,callId});
 
         // create stream video call
-        await streamClient.video.call("default",callId).getORCreate({
+        await streamClient.video.call("default",callId).getOrCreate({
             data:{
                 created_by_id:clerkId,
                 custom:{problem , difficulty ,sessionId:session._id.toString()},
@@ -46,7 +46,7 @@ async function getActiveSessions(req,res){
     try{
         const sessions=await Session.find({status:"active"})
         .populate("host","name profileImage email clerkId")
-        .populate("participants","name profileImage email clerkId")
+        .populate("participant","name profileImage email clerkId")
             .sort({createdAt:-1})
             .limit(20)
         res.status(200).json({sessions});
