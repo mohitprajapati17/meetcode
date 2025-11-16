@@ -81,10 +81,10 @@ async function getMyRecentSessions(req,res){
 }
 async function getSessionById(req,res){
     try{
-        const {id}=ewq.user.id;
+        const {id}=req.params;
         const session =await  Session.findById(id)
-        .populate("host","name profileImage email clerkId")
-        .populate("participants","name profileImage email clerkId")
+        .populate("host","name email profileImage  clerkId")
+        .populate("participant","name email profileImage clerkId")
         if(!session){
             return res.status(404).json({message:"Session not found"});
         }
@@ -150,7 +150,7 @@ async function endSession(req,res){
         }
 
         //   check if user  is host 
-        if(session.host.toString!==userId.toString()){
+        if(session.host.toString()!==userId.toString()){
             return res.status(403).json({message:"only host can end session"});
         }
 
