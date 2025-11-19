@@ -339,6 +339,260 @@ export const PROBLEMS = {
         java: "49\n1",
       },
     },
+    "best-time-to-buy-and-sell-stock": {
+  id: "best-time-to-buy-and-sell-stock",
+  title: "Best Time to Buy and Sell Stock",
+  difficulty: "Easy",
+  category: "Array • Greedy",
+  description: {
+    text: "You're given an array prices where prices[i] is the price of a stock on day i. Return the maximum profit you can achieve from a single buy and a single sell.",
+    notes: [
+      "You must buy before selling.",
+      "If no profit is possible, return 0."
+    ]
+  },
+  examples: [
+    {
+      input: "prices = [7,1,5,3,6,4]",
+      output: "5",
+      explanation: "Buy at 1 and sell at 6"
+    },
+    {
+      input: "prices = [7,6,4,3,1]",
+      output: "0",
+      explanation: "No profitable trade possible"
+    },
+    {
+      input: "prices = [2,4,1]",
+      output: "2"
+    }
+  ],
+  constraints: [
+    "1 ≤ prices.length ≤ 10⁵",
+    "0 ≤ prices[i] ≤ 10⁴"
+  ],
+  starterCode: {
+    javascript: `function maxProfit(prices) {
+  // Write your solution here
+  
+}
+
+console.log(maxProfit([7,1,5,3,6,4])); 
+console.log(maxProfit([7,6,4,3,1])); 
+console.log(maxProfit([2,4,1]));`,
+    python: `def maxProfit(prices):
+    # Write your solution here
+    pass
+
+print(maxProfit([7,1,5,3,6,4]))
+print(maxProfit([7,6,4,3,1]))
+print(maxProfit([2,4,1]))`,
+    java: `class Solution {
+    public static int maxProfit(int[] prices) {
+        // Write your solution here
+        
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
+        System.out.println(maxProfit(new int[]{7,6,4,3,1}));
+        System.out.println(maxProfit(new int[]{2,4,1}));
+    }
+}`
+  },
+  expectedOutput: {
+    javascript: "5\n0\n2",
+    python: "5\n0\n2",
+    java: "5\n0\n2"
+  }
+    },
+    "valid-parentheses": {
+  id: "valid-parentheses",
+  title: "Valid Parentheses",
+  difficulty: "Easy",
+  category: "Stack • String",
+  description: {
+    text: "Given a string s containing only parentheses characters, determine if it is valid.",
+    notes: [
+      "Open brackets must be closed by the same type.",
+      "Brackets must close in the correct order."
+    ]
+  },
+  examples: [
+    { input: 's = "()"', output: "true" },
+    { input: 's = "()[]{}"', output: "true" },
+    { input: 's = "(]"', output: "false" }
+  ],
+  constraints: [
+    "1 ≤ s.length ≤ 10⁴",
+    "s consists of parentheses only"
+  ],
+  starterCode: {
+    javascript: `function isValid(s) {
+  // Write your solution here
+  
+}
+
+console.log(isValid("()"));
+console.log(isValid("()[]{}"));
+console.log(isValid("(]"));`,
+    python: `def isValid(s):
+    # Write your solution here
+    pass
+
+print(isValid("()"))
+print(isValid("()[]{}"))
+print(isValid("(]"))`,
+    java: `class Solution {
+    public static boolean isValid(String s) {
+        // Write your solution here
+        
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isValid("()"));
+        System.out.println(isValid("()[]{}"));
+        System.out.println(isValid("(]"));
+    }
+}`
+  },
+  expectedOutput: {
+    javascript: "true\ntrue\nfalse",
+    python: "True\nTrue\nFalse",
+    java: "true\ntrue\nfalse"
+  }
+    },
+    "merge-two-sorted-lists": {
+  id: "merge-two-sorted-lists",
+  title: "Merge Two Sorted Lists",
+  difficulty: "Easy",
+  category: "Linked List",
+  description: {
+    text: "Merge two sorted linked lists and return it as a sorted list.",
+    notes: [
+      "Both lists should be merged by creating a new sorted linked list."
+    ]
+  },
+  examples: [
+    {
+      input: "l1 = [1,2,4], l2 = [1,3,4]",
+      output: "[1,1,2,3,4,4]"
+    },
+    {
+      input: "l1 = [], l2 = []",
+      output: "[]"
+    },
+    {
+      input: "l1 = [], l2 = [0]",
+      output: "[0]"
+    }
+  ],
+  constraints: [
+    "0 ≤ length ≤ 50",
+    "-100 ≤ Node.val ≤ 100"
+  ],
+  starterCode: {
+    javascript: `function mergeTwoLists(l1, l2) {
+  // Write your solution here
+  
+}
+
+// Test cases (lists will be provided by platform)`,
+    python: `def mergeTwoLists(l1, l2):
+    # Write your solution here
+    pass`,
+    java: `class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+
+class Solution {
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // Write your solution here
+        
+        return null;
+    }
+}`
+  },
+  expectedOutput: {
+    javascript: "[1,1,2,3,4,4]",
+    python: "[1,1,2,3,4,4]",
+    java: "[1,1,2,3,4,4]"
+  }
+    },
+    "longest-substring-without-repeating-characters": {
+  id: "longest-substring-without-repeating-characters",
+  title: "Longest Substring Without Repeating Characters",
+  difficulty: "Medium",
+  category: "String • Sliding Window",
+  description: {
+    text: "Given a string s, find the length of the longest substring without repeating characters.",
+    notes: [
+      "Use sliding window or hashing to track characters."
+    ]
+  },
+  examples: [
+    {
+      input: 's = "abcabcbb"',
+      output: "3",
+      explanation: '"abc" is the longest substring.'
+    },
+    {
+      input: 's = "bbbbb"',
+      output: "1"
+    },
+    {
+      input: 's = "pwwkew"',
+      output: "3"
+    }
+  ],
+  constraints: [
+    "0 ≤ s.length ≤ 5 * 10⁴",
+    "s consists of ASCII characters"
+  ],
+  starterCode: {
+    javascript: `function lengthOfLongestSubstring(s) {
+  // Write your solution here
+  
+}
+
+console.log(lengthOfLongestSubstring("abcabcbb"));
+console.log(lengthOfLongestSubstring("bbbbb"));
+console.log(lengthOfLongestSubstring("pwwkew"));`,
+    python: `def lengthOfLongestSubstring(s):
+    # Write your solution here
+    pass
+
+print(lengthOfLongestSubstring("abcabcbb"))
+print(lengthOfLongestSubstring("bbbbb"))
+print(lengthOfLongestSubstring("pwwkew"))`,
+    java: `class Solution {
+    public static int lengthOfLongestSubstring(String s) {
+        // Write your solution here
+        
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("bbbbb"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
+    }
+}`
+  },
+  expectedOutput: {
+    javascript: "3\n1\n3",
+    python: "3\n1\n3",
+    java: "3\n1\n3"
+  }
+    }
+
+
+   
+
   };
   
   export const LANGUAGE_CONFIG = {
